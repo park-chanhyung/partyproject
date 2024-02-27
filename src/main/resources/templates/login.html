@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/login.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <!-- Heading -->
+    <h1>SIGN IN</h1>
+
+    <!-- Links -->
+    <ul class="links">
+        <li>
+            <a id="signin" href="/login">SIGN IN</a>
+        </li>
+        <li>
+            <a  d="signup" href="/join">SIGN UP</a>
+        </li>
+<!--        <li>-->
+<!--            <a href="#" id="reset">RESET</a>-->
+<!--        </li>-->
+    </ul>
+
+
+    <!-- Form -->
+    <form th:method="post" th:action="|@{/login}|" th:object="${loginRequest}">
+        <!-- email input -->
+        <div class="first-input input__block first-input__block">
+            <label th:for="loginId"></label>
+            <input type="text" th:field="*{loginId}"  class="input" placeholder="ID" />
+        </div>
+        <!-- password input -->
+        <div class="input__block">
+            <label th:for="password"></label>
+            <input type="password" th:field="*{password}" placeholder="Password" class="input" id="password"    />
+        </div>
+        <!-- repeat password input -->
+        <div class="input__block">
+            <input type="password" placeholder="Repeat password" class="input repeat__password" id="repeat__password"    />
+        </div>
+        <!-- sign in button -->
+        <button class="signin__btn">
+            Sign in
+        </button>
+    </form>
+
+<!--    <form th:method="post" th:action="|@{/login}|" th:object="${loginRequest}">-->
+
+<!--        <div>-->
+<!--            <label th:for="loginId">로그인 아이디 : </label>-->
+<!--            <input type="text" th:field="*{loginId}"/>-->
+<!--        </div>-->
+<!--        <br/>-->
+<!--        <div>-->
+<!--            <label th:for="password">비밀번호 : </label>-->
+<!--            <input type="password" th:field="*{password}"/>-->
+<!--        </div>-->
+<!--        <div th:if="${#fields.hasGlobalErrors()}">-->
+<!--            <br/>-->
+<!--            <div class="error-class" th:each="error : ${#fields.globalErrors()}" th:text="${error}" />-->
+<!--        </div>-->
+<!--        <br/>-->
+<!--        <button type="submit">로그인</button>-->
+<!--        <button onclick="location" href="/join">회원 가입</button> <br/><br/>-->
+<!--    </form>-->
+
+
+<!-- separator -->
+<div class="separator">
+    <p>OR</p>
+</div>
+<!-- google button -->
+<button class="google__btn">
+    <a href="/oauth2/authorization/google">
+    <i class="fa fa-google">Google Login</i>
+    </a>
+</button>
+<!-- google button -->
+<button class="github__btn">
+    <i class="fa fa-facebook"></i>
+    <a href="/oauth2/authorization/kakao">Kakao Login</a>
+</button>
+<button class="github__btn">
+    <i class="fa fa-facebook"></i>
+    <a href="/oauth2/authorization/naver">Naver Login</a>
+</button>
+</div>
+</body>
+</html>

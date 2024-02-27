@@ -1,0 +1,39 @@
+/* 네브바 스타일 */
+.nav-bar {
+    display: flex; /* 요소들을 수평으로 정렬하기 위해 flex 사용 */
+    align-items: center; /* 요소들을 수직으로 중앙 정렬 */
+    /*padding: 10px 20px; !* 네브바의 내부 여백 설정 *!*/
+    background-color: #fff; /* 배경색 지정 */
+    color: black; /* 텍스트 색상 지정 */
+    margin: auto;
+    width: 1400px;
+    height: 80px;
+}
+
+/* 로그인 버튼 스타일 */
+.login-button {
+    text-decoration: none; /* 링크 밑줄 제거 */
+    font-weight: 700;
+    background-color: black;
+    color: white !important; /* 텍스트 색상을 흰색으로 강제 지정 */
+    margin-left: 10px; /* 로그인 버튼 간격 조정 */
+}
+
+/* 로그인 버튼에 마우스 호버 시 스타일 */
+.login-button:hover {
+    opacity: 0.8; /* 마우스 호버 시 투명도 조정 */
+}
+
+/* 로그인 아이콘 이미지 스타일 */
+.nav-bar img {
+    margin-right: 10px; /* 이미지 간격 조정 */
+}
+
+/* 네브바 로고 이미지 스타일 */
+.nav-bar img.logo {
+    width: 180px; /* 로고 이미지 너비 지정 */
+    height: 130px; /* 로고 이미지 높이 지정 */
+}
+.right-menu{
+    margin-left: 980px;
+}

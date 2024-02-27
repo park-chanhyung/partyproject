@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <link rel="stylesheet" type="text/css" href="css/nav.css" />
+</head>
+<body>
+<nav th:replace="~{nav :: navbarFragment}"></nav>
+<section class="grid-wrap1">
+    <ul class="grid swipe-down" id="grid">
+        <li class="title-box">
+            <h2>Illustrations by <a href="http://ryotakemasa.com/">Ryo Takemasa</a></h2>
+        </li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+    </ul>
+</section>
+
+<script src="js/modernizr.custom.js"></script>
+<script src="js/timer.js"></script>
+<script src="js/masonry.pkgd.min.js"></script>
+<script src="js/imagesloaded.pkgd.min.js"></script>
+<script src="js/classie.js"></script>
+<script src="js/colorfinder-1.1.js"></script>
+<script src="js/gridScrollFx.js"></script>
+<script>
+    new GridScrollFx( document.getElementById( 'grid' ), {
+        viewportFactor : 0.4
+    } );
+</script>
+</body>
+</html>

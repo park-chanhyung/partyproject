@@ -1,0 +1,65 @@
+footer {
+    color:#a7aaac;
+    background-color: #fbfbfb;
+    width: 100%;
+    max-width: 1440px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+}
+
+footer ul {
+    list-style: none; /* 목록 기호 제거 */
+    padding: 0;
+}
+
+footer ul li {
+    font-size: 18px;
+    margin-bottom: 10px; /* 각 항목 사이 간격 설정 */
+}
+
+footer ul li:last-child {
+    margin-bottom: 0; /* 마지막 항목의 간격 설정 */
+}
+
+footer ul li a {
+    color: #a7aaac; /* 링크 색상 설정 */
+    text-decoration: none; /* 밑줄 제거 */
+    transition: color 0.3s ease; /* 색상 변화에 트랜지션 적용 */
+}
+
+footer ul li a:hover {
+    color: #0068FF; /* 호버 시 색상 변경 */
+}
+
+.footer-social-icons {
+    margin-top: 20px; /* 소셜 아이콘 상단 간격 설정 */
+    margin-left: 5px;
+}
+
+.footer-social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 18px;
+    transition: background-color 0.3s ease; /* 배경색 변화에 트랜지션 적용 */
+}
+
+.footer-social-icons a:hover {
+    background-color: #0068FF; /* 호버 시 배경색 변경 */
+}
+.button3{
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -.25px;
+    font-weight: 600;
+    vertical-align: baseline
+}
+i{
+    margin: 12px;
+}

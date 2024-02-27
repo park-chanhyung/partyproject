@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>수정페이지</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <script src="/js/join.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="/css/birth.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>수정을 위해<br>정보를 입력해주세요.</h2>
+        <form th:method="post" action="/update" th:object="${user}">
+
+            <label for="username">* 이름<br></label>
+            <input type="text" th:field="*{username}" th:errorclass="error-input"/>
+            <div class="error-class" th:errors="*{username}"></div>
+            <br><br>
+
+            <div class="first-input input__block first-input__block">
+                <label th:for="loginId"></label>
+                <input type="text" th:field="*{loginId}"  placeholder="ID" class="input" required />
+                <div class="error-class" th:errors="*{loginId}"></div>
+            </div>
+            <div class="input__block">
+                <label th:for="password"></label>
+                <input type="password" th:field="*{nowPassword}" th:errorclass="error-input" placeholder="Password" class="input" id="nowPassword" name="nowPassword" required/>
+                <div class="error-class" th:if="${#fields.hasErrors('nowPassword')}" th:errors="*{nowPassword}"></div>
+            </div>
+            <label for="password">* 현재 비밀번호 :</label>
+            <input type="password" id="nowPassword" name="nowPassword" th:field="*{nowPassword}" th:errorclass="error-input"/>
+            <div class="error-class" th:if="${#fields.hasErrors('nowPassword')}" th:errors="*{nowPassword}"></div>
+
+            <br><br>
+
+            <label for="newPassword">* 새로운 비밀번호 :</label>
+            <input type="password" id="newPassword" name="newPassword" th:field="*{newPassword}" th:errorclass="error-input"/>
+            <div class="error-class" th:if="${#fields.hasErrors('newPassword')}" th:errors="*{newPassword}"></div>
+
+            <br><br>
+
+            <label for="newPasswordCheck">* 새로운 비밀번호 확인 :</label>
+            <input type="password" id="newPasswordCheck" name="newPasswordCheck" th:field="*{newPasswordCheck}" th:errorclass="error-input"/>
+            <div class="error-class" th:if="${#fields.hasErrors('newPasswordCheck')}" th:errors="*{newPasswordCheck}"></div>
+
+            <br><br>
+
+            <label for="nickname">* 닉네임 :</label>
+            <input type="text" th:field="*{nickname}" th:errorclass="error-input"/>
+            <div class="error-class" th:errors="*{nickname}"></div>
+
+            <br><br>
+
+                나이 <input type="number" class="age" name="age"  min="10" max = "99" step="1">
+            <br><br>
+            <button type="submit">수정하기</button>
+            <br><br>
+            <button onclick="location.href='/info'">뒤로가기</button>
+        </form>
+    </div>
+</body>
+</html>
+

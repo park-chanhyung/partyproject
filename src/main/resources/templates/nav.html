@@ -1,0 +1,15 @@
+
+<nav th:fragment="navbarFragment" class="nav-bar">
+    <a href="/">
+        <img src="img/partylogo.png" loading="lazy" width="120" height="70" decoding="async" data-nimg="1"  style="color: transparent;">
+    </a>
+    <a href="/feed">피드</a>
+    <div class="right-menu">
+        <a class="login-button btn btn-dark" href="/login" sec:authorize="isAnonymous()"><span>로그인</span></a>
+        <!--				내정보-->
+        <a href="/info"   sec:authorize="isAuthenticated()">
+            <img src="img/info.png" class="right"  loading="lazy" width="24" height="24" decoding="async" data-nimg="1"  style="color: transparent;">
+        </a>
+        <a class="login-button btn btn-dark" href="/jwtLogout" sec:authorize="isAuthenticated()"><span>로그아웃</span></a>
+    </div>
+</nav>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Party SignIn</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    // $(document).ready(function() {
+    //     // 이메일 인증번호
+    //     $("#checkEmail").click(function (event) {
+    //         event.preventDefault(); // 기본 제출 동작을 막음
+    //
+    //         // 클릭한 버튼 가져오기
+    //         var $button = $(this);
+    //
+    //         // 이메일 입력값 확인
+    //         var emailValue = $("#email").val().trim();
+    //         if (emailValue === "" || !isValidEmail(emailValue)) {
+    //             alert("유효한 이메일 주소를 입력해주세요.");
+    //             return; // 이메일이 유효하지 않으면 함수 종료
+    //         }
+    //
+    //         // 버튼 색상 변경
+    //         $button.css('background-color', '#cccccc'); // 임의의 색상으로 변경 가능
+    //         // 버튼 비활성화
+    //         $button.prop('disabled', true);
+    //
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "/emailConfirm",
+    //             data: {
+    //                 "email" : $("#email").val()
+    //             },
+    //             success: function (data) {
+    //                 alert("해당 이메일로 인증번호 발송이 완료되었습니다. \n 확인부탁드립니다.");
+    //                 console.log("data : " + data);
+    //                 chkEmailConfirm(data, $("#emailconfirm"), $("emailconfirmTxt"));
+    //             },
+    //
+    //             complete: function () {
+    //                 // AJAX 요청 완료 후, 10초 후에 버튼을 다시 활성화
+    //                 setTimeout(function () {
+    //                     $button.prop('disabled', false);
+    //                     $button.css('background-color', '#eb1e7a'); // 원래 버튼 색상으로 변경
+    //                 }, 10000);
+    //             }
+    //         });
+    //     });
+    //
+    //     // 이메일 형식이 올바른지 확인하는 함수
+    //     function isValidEmail(email) {
+    //         // 이메일 정규식
+    //         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //         return emailPattern.test(email);
+    //     }
+    //
+    //     // 이메일 인증번호 체크 함수
+    //     function chkEmailConfirm(data, $emailconfirm, $emailconfirmTxt) {
+    //         $emailconfirm.on("keyup", function () {
+    //             if (data != $emailconfirm.val()) {
+    //                 emconfirmchk = false;
+    //                 $emailconfirmTxt.html("<span id='emconfirmchk'>인증번호가 잘못되었습니다</span>")
+    //                     .css({
+    //                         "color": "#FA3E3E",
+    //                         "font-weight": "bold",
+    //                         "font-size": "15px"
+    //                     });
+    //             } else {
+    //                 emconfirmchk = true;
+    //                 $emailconfirmTxt.html("<span id='emconfirmchk'>인증번호 확인 완료</span>")
+    //                     .css({
+    //                         "color": "#0D6EFD",
+    //                         "font-weight": "bold",
+    //                         "font-size": "15px"
+    //                     });
+    //                 $('input[name="emailck"]').val('1');
+    //             }
+    //         });
+    //     }
+    // });
+    //     // 폼 제출 이벤트 리스너 추가
+    // $(document).ready(function() {
+    //     // 폼 제출 이벤트 리스너 추가
+    //     $("form").submit(function(event) {
+    //         // emailck 값이 1이 아닌 경우
+    //         if ($("input[name='emailck']").val() !== "1") {
+    //             // 폼 제출을 막습니다.
+    //             event.preventDefault();
+    //             // 오류 메시지를 표시합니다. (예: 어떻게든 오류를 표시하거나 처리하세요)
+    //             alert("이메일 인증이 완료되지 않았습니다.");
+    //         }
+    //     });
+    // });
+    $(document).ready(function() {
+        // 이메일 인증번호
+        $("#checkEmail").click(function(event) {
+            event.preventDefault(); // 기본 제출 동작을 막음
+
+            // 클릭한 버튼 가져오기
+            var $button = $(this);
+
+            // 이메일 입력값 확인
+            var emailValue = $("#email").val().trim();
+            if (emailValue === "" || !isValidEmail(emailValue)) {
+                alert("유효한 이메일 주소를 입력해주세요.");
+                return; // 이메일이 유효하지 않으면 함수 종료
+            }
+
+            // 버튼 색상 변경
+            $button.css('background-color', '#cccccc'); // 임의의 색상으로 변경
+            // 버튼 비활성화
+            $button.prop('disabled', true);
+
+            $.ajax({
+                type: "POST",
+                url: "/emailConfirm",
+                data: {
+                    "email" : $("#email").val()
+                },
+                success: function (data) {
+                    alert("해당 이메일로 인증번호 발송이 완료되었습니다. \n 확인부탁드립니다.");
+                    console.log("data : " + data);
+                    // chkEmailConfirm 함수를 호출하지 않고, 이벤트 핸들러를 여기에서 직접 등록합니다.
+                    $("#emailconfirm").on("keyup", function () {
+                        if (data != $(this).val()) {
+                            emconfirmchk = false;
+                            $("#emailconfirmTxt").html("<span id='emconfirmchk'>인증번호가 잘못되었습니다</span>")
+                                .css({
+                                    "color": "#FA3E3E",
+                                    "font-weight": "bold",
+                                    "font-size": "15px"
+                                });
+                        } else {
+                            emconfirmchk = true;
+                            $("#emailconfirmTxt").html("<span id='emconfirmchk'>인증번호 확인 완료</span>")
+                                .css({
+                                    "color": "#0D6EFD",
+                                    "font-weight": "bold",
+                                    "font-size": "15px"
+                                });
+                            $('input[name="emailck"]').val('1');
+                        }
+                    });
+                },
+                complete: function () {
+                    // AJAX 요청 완료 후, 10초 후에 버튼을 다시 활성화
+                    setTimeout(function () {
+                        $button.prop('disabled', false);
+                        $button.css('background-color', '#eb1e7a'); // 원래 버튼 색상으로 변경
+                    }, 10000);
+                }
+            });
+        });
+
+        // 이메일 형식이 올바른지 확인하는 함수
+        function isValidEmail(email) {
+            // 이메일 정규식
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+    });
+</script>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+        <a href="/">
+            <img src="img/partylogo.png" loading="lazy" width="200" height="120" decoding="async" data-nimg="1"  style="color: transparent;">
+        </a>
+        </header>
+        <h2>회원가입을 위해<br>정보를 입력해주세요.</h2>
+        <form th:method="post" th:action="@{/join}" th:object="${joinRequest}">
+
+            <div class="first-input input__block first-input__block">
+                <label th:for="loginId"></label>
+                <input type="text" th:field="*{loginId}"  placeholder="ID" class="input" required />
+                <div class="error-class" th:errors="*{loginId}"></div>
+            </div>
+            <div class="input__block">
+                <label th:for="password"></label>
+                <input type="password" th:field="*{password}" placeholder="Password" class="input" id="password" required/>
+            </div>
+            <div class="input__block">
+                <label th:for="passwordCheck"></label>
+                <input type="password" th:field="*{passwordCheck}" th:errorclass="error-input" placeholder="Password-Check" class="input" id="repeat__password"  required  />
+                <div class="error-class" th:errors="*{passwordCheck}"></div>
+            </div>
+            <div class="input__block">
+                <label th:for="username"></label>
+                <input type="text" th:field="*{username}" th:errorclass="error-input" placeholder="성명" class="input" required/>
+            </div>
+            <div class="input__block">
+                <label th:for="nickname"></label>
+                <input type="text" th:field="*{nickname}" th:errorclass="error-input" placeholder="Nickname" class="input" required/>
+                <div class="error-class" th:errors="*{nickname}"></div>
+            </div>
+
+            <div class="input__block">
+                <label for="email"  id="mailTxt" ></label>
+                <input type="text" name="email" id="email" th:field="*{email}" th:errorclass="error-input" placeholder="Email" class="input" required/>
+                <div class="error-class" th:errors="*{email}"></div>
+            </div>
+
+<!--            <button class="btn btn-outline-primary" type="button" id="checkEmail">인증번호 전송</button>-->
+            <button class="signin__btn" type="button" id="checkEmail">인증번호 전송</button>
+            <br><br>
+
+            <!-- 이메일 인증번호 입력 부분 -->
+            <div class="input__block">
+                <label for="emailconfirm" id="emailconfirmTxt"></label>
+                <input type="text" id="emailconfirm" class="input" placeholder="인증번호를 입력해주세요"/>
+            </div>
+                나이 <input type="number" class="age" name="age"  min="10" max = "99" step="1">
+                <input type="radio" class="radio" name="gender" value="남성">&nbsp 남성
+                <input type="radio" class="radio" name="gender" value="여성">&nbsp 여성
+            <br><br>
+                <input type="checkbox" class="agree" required>&nbsp 이용약관 개인정보 수집 및 정보이용에 동의합니다.
+            <br><br>
+            <hr>
+            <hr>
+                <input type="hidden"  name="emailck" value="0">
+
+            <button class="signin__btn" type="submit">가입하기</button>
+        </form>
+    </div>
+
+
+</body>
+</html>
+
