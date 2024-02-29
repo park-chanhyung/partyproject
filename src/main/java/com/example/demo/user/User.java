@@ -57,18 +57,18 @@ public class User {
                 .collect(Collectors.toList());
     }
 
-    public void edit(String newPassword, String newNickname, String newLoginId, String newUsername, int newAge) {
+    public void edit(String newPassword, String newNickname, String newLoginId, int newAge,String newGender) {
          this.loginId = newLoginId;
-        this.username = newUsername;
         this.password = newPassword;
         this.nickname = newNickname;
         this.age = newAge;
+        this.gender = newGender;
     }
-    public void apiEdit( String newNickname, String newLoginId, String newUsername, int newAge) {
-        this.loginId = newLoginId;
+    public void apiEdit( String newNickname, String newUsername, int newAge,String newGender) {
         this.username = newUsername;
         this.nickname = newNickname;
         this.age = newAge;
+        this.gender = newGender;
     }
 
 //    public void edit(String newPassword, String newNickname, String newLoginId, String newUsername, int newAge, int age, String password, String nickname,String loginId,String username) {

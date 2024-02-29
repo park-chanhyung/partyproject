@@ -20,6 +20,7 @@ public class UpdateRequest {
     private String nowPassword;
     private String newPassword;
     private String newPasswordCheck;
+    private String gender;
 
     // 비밀번호 암호화
     public static UpdateRequest of(User user) {
@@ -28,6 +29,7 @@ public class UpdateRequest {
                 .loginId(user.getLoginId())
                 .nickname(user.getNickname())
                 .age(user.getAge())
+                .gender(user.getGender())
                 .build();
     }
 

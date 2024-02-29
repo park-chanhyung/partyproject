@@ -6,8 +6,12 @@
     background-color: #fff; /* 배경색 지정 */
     color: black; /* 텍스트 색상 지정 */
     margin: auto;
-    width: 1400px;
-    height: 80px;
+    /*width: 1400px;*/
+    /*height: 80px;*/
+
+    max-width: 1280px;
+
+    width: 100%;
 }
 
 /* 로그인 버튼 스타일 */
@@ -35,5 +39,19 @@
     height: 130px; /* 로고 이미지 높이 지정 */
 }
 .right-menu{
-    margin-left: 980px;
+    position: fixed;
+    right: 350px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.menu{
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    color: #787878;
+}
+.menu:hover{
+    text-decoration: none;
+    color: #2E3444;
+    font-size: 22px;
 }

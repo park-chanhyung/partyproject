@@ -15,7 +15,6 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,7 +24,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 @Slf4j
 @Controller
@@ -172,10 +170,12 @@ public class JwtLoginController {
     @GetMapping("/info")
     public String userInfo(Model model, Authentication auth) {
         User loginUser = userService.getLoginUserByLoginId(auth.getName());
+            log.info("유저정보"+loginUser);
         if (loginUser == null) {
             User Email = userService.getLoginUserByEmail(auth.getName());
             model.addAttribute("user",Email);
             log.info("이프 유저정보"+auth.getName());
+            log.info("이프 유저정보"+Email);
         } else  {
             model.addAttribute("user", loginUser);
             log.info("엘쓰 유저정보"+loginUser);
@@ -183,6 +183,7 @@ public class JwtLoginController {
 
         return "info";
     }
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/update")
     public String update(Authentication auth , Model model) {
         User user = this.userService.myInfo(auth.getName());
@@ -257,8 +258,5 @@ public class JwtLoginController {
 
         return "errorPage/authorizationFail";
     }
-    @GetMapping("/feed")
-    public String feed(){
-        return "feed";
-    }
+
 }

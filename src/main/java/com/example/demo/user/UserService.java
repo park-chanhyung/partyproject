@@ -7,6 +7,7 @@ import com.example.demo.DTO.JoinRequest;
 import com.example.demo.DTO.UpdateRequest;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,7 @@ import org.springframework.validation.FieldError;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -128,16 +130,16 @@ public class UserService {
         User loginUser = userRepository.findByLoginId(loginId).get();
 
         if (updateRequest.getNewPassword().equals("")) {
-            loginUser.edit(loginUser.getPassword(), updateRequest.getNickname(),updateRequest.getLoginId(),updateRequest.getUsername(),updateRequest.getAge());
+            loginUser.edit(loginUser.getPassword(), updateRequest.getNickname(),updateRequest.getLoginId(),updateRequest.getAge(),updateRequest.getGender());
         } else {
-            loginUser.edit(encoder.encode(updateRequest.getNewPassword()), updateRequest.getNickname(), updateRequest.getLoginId(), updateRequest.getUsername(), updateRequest.getAge());
+            loginUser.edit(encoder.encode(updateRequest.getNewPassword()), updateRequest.getNickname(), updateRequest.getLoginId(), updateRequest.getAge(),updateRequest.getGender());
         }
     }
     @Transactional
     public void apiEdit(UpdateRequest updateRequest, String loginId) {
         User loginUser = userRepository.findByLoginId(loginId).get();
 
-        loginUser.apiEdit( updateRequest.getNickname(),updateRequest.getLoginId(),updateRequest.getUsername(),updateRequest.getAge());
+        loginUser.apiEdit( updateRequest.getNickname(),updateRequest.getUsername(),updateRequest.getAge(),updateRequest.getGender());
 
     }
 
@@ -223,6 +225,12 @@ public class UserService {
     public User getLoginUserByEmail(String email) {
 
         Optional<User> byEmail = userRepository.findByEmail(email);
+        if(byEmail.isEmpty()) {
+            Optional<User> byNickname = userRepository.findByNickname(email);
+            log.info("이프 바이 닉네임"+byNickname);
+            return byNickname.get();
+        };
+//        return byEmail.get();
         return byEmail.get();
 
     }

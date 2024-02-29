@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"  th:href="@{/css/component.css}" />
+    <link rel="stylesheet" type="text/css"th:href="@{/css/nav.css}" />
+</head>
+<body>
+<nav th:replace="~{nav :: navbarFragment}"></nav>
+
+<header class="header-box">
+    <h1>파티에 참가하거나 <br>이상적인 파티를 만들어보세요</h1>
+    <div class="area">
+        <span><a class="select-aria" href="/feed">서울</a></span>
+        <span><a class="select-aria" href="/feed/gangwon">강원</a></span>
+        <span><a class="select-aria" href="/feed/daejeon">대전</a></span>
+        <span><a class="select-aria" href="/feed/busan">부산</a></span>
+    </div>
+</header>
+
+
+<section class="grid-wrap1">
+    <ul class="grid swipe-down" id="grid">
+        <li class="title-box">
+            <h2>파티 모집<a style="color: #e91e63">Daegu</a></h2>
+            <!--            <h2>파티 모집<p href="http://ryotakemasa.com/">Seoul</p></h2>-->
+        </li>
+        <li><a href="#"><img src="/img/002.jpg" alt="dummy" loading="lazy"  height="380"><h3>성수동에서 스터디 하실분</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+        <li><a href="#"><img src="/img/dummy.png" alt="dummy"><h3>A fantastic title</h3></a></li>
+    </ul>
+</section>
+
+<script src="/js/modernizr.custom.js"></script>
+<script src="/js/timer.js"></script>
+<script src="/js/masonry.pkgd.min.js"></script>
+<script src="/js/imagesloaded.pkgd.min.js"></script>
+<script src="/js/classie.js"></script>
+<script src="/js/colorfinder-1.1.js"></script>
+<script src="/js/gridScrollFx.js"></script>
+<script src="/js/tokenOut.js"></script>
+
+<script>
+    new GridScrollFx( document.getElementById( 'grid' ), {
+        viewportFactor : 0.4
+    } );
+</script>
+</body>
+</html>
