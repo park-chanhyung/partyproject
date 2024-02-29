@@ -3,8 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 폼 요소들을 수평으로 배열하기 */
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        /* 입력 필드 간격 조정 */
+        form input[type="text"],
+        form textarea,
+        form input[type="checkbox"] {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* 제출 버튼 스타일링 */
+        form input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
+
+    <form th:action="@{/feed/create}" th:object="${feedForm}"  method="post" enctype="multipart/form-data">
+        <div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+            <div th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+        </div>
+        <label for="title">제목:</label>
+        <input type="text"  th:field="*{title}" id="title" name="title">
+
+        <label for="content">내용:</label>
+        <textarea id="content"   th:field="*{content}"  name="comment" rows="10" placeholder="내용을 입력해주세요"></textarea>
+
+        <label>지역:
+        <label><input type="checkbox" name="area" value="서울" onchange="uncheckAllExcept(this)">서울</label>
+        <label><input type="checkbox" name="area" value="강원" onchange="uncheckAllExcept(this)">강원</label>
+        <label><input type="checkbox" name="area" value="대전" onchange="uncheckAllExcept(this)">대전</label>
+        <label><input type="checkbox" name="area" value="대구" onchange="uncheckAllExcept(this)">대구</label>
+        <label><input type="checkbox" name="area" value="부산" onchange="uncheckAllExcept(this)">부산</label>
+        </label>
+        <label for="address">연락처:</label>
+        <input type="text" th:field="*{address}" id="address" name="address">
+        <input type="file" id="file" name="file" accept="image/*">
+        <input type="submit" value="작성하기">
+    </form>
+
+
+
+<script  src="/js/createFeed.js"></script>
 </body>
 </html>

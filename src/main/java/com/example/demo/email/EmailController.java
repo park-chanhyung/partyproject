@@ -1,5 +1,6 @@
 package com.example.demo.email;
 
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,9 +14,9 @@ public class EmailController{
     private final EmailService emailService;
     @PostMapping("/emailConfirm")
     @ResponseBody
-    public String emailConfirm(@RequestParam String email) throws Exception {
+    public String emailConfirm(@RequestParam(value="memail") String memail) throws Exception {
 
-        String confirm = emailService.sendSimpleMessage(email);
+        String confirm = emailService.sendSimpleMessage(memail);
 
         return confirm;
     }

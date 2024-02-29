@@ -10,7 +10,6 @@ version = '0.0.1-SNAPSHOT'
 java {
 	sourceCompatibility = '17'
 }
-
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -52,10 +51,10 @@ dependencies {
 	//outh2
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
+//	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
 
 }
-
 tasks.named('test') {
 	useJUnitPlatform()
 }

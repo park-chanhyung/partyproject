@@ -139,7 +139,7 @@ public class UserService {
     public void apiEdit(UpdateRequest updateRequest, String loginId) {
         User loginUser = userRepository.findByLoginId(loginId).get();
 
-        loginUser.apiEdit( updateRequest.getNickname(),updateRequest.getUsername(),updateRequest.getAge(),updateRequest.getGender());
+        loginUser.apiEdit(updateRequest.getNickname(),updateRequest.getUsername(),updateRequest.getAge(),updateRequest.getGender());
 
     }
 

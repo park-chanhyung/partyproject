@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -26,6 +25,12 @@ public class Feed {
 
     @Column(length = 500)
     private String content;
+
+    @Column
+    private String area;
+
+    @Column
+    private String address;
 
     private LocalDateTime regtime;
 

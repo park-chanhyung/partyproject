@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/nav.css}" />
+</head>
+<body>
+<nav th:replace="~{nav :: navbarFragment}"></nav>
+상세페이지
+<span th:text="${feed.title}"></span>
+<span th:text="${feed.content}"></span>
+<span th:text="${feed.regtime}"></span>
+<span th:text="${feed.author}"></span>
+<img th:src="@{'http://localhost:8081' + ${feed.filePath}}" width="300" height="380"  alt="로딩중">
+
+
+</body>
+</html>

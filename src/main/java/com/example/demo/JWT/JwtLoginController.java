@@ -196,15 +196,12 @@ public class JwtLoginController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/update")
     public String update(@Valid @ModelAttribute UpdateRequest updateRequest, BindingResult bindingResult,
-                           Authentication auth, Model model) {
+                           Authentication auth) {
         // Validation
         if (userService.editValid(updateRequest, bindingResult, auth.getName()).hasErrors()) {
             return "/update";
         }
         userService.edit(updateRequest,auth.getName());
-        model.addAttribute("message","정보 수정이 완료되었습니다!");
-        model.addAttribute("nextUrl","/");
-
         return "redirect:/";
     }
 
@@ -218,18 +215,18 @@ public class JwtLoginController {
 
         return "apiUpdate";
     }
-
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/apiUpdate")
     public String apiUpdate(@Valid @ModelAttribute UpdateRequest updateRequest, BindingResult bindingResult,
-                         Authentication auth, Model model) {
+                            Authentication auth, Model model) {
         // Validation
-        if (userService.apiEditValid(updateRequest, bindingResult, auth.getName()).hasErrors()) {
-            return "/apiUpdate";
+        if (bindingResult.hasErrors()) {
+            // 유효성 검사에 실패하면 다시 "/apiUpdate" 뷰를 보여줍니다.
+            return "apiUpdate";
         }
-        userService.apiEdit(updateRequest,auth.getName());
-        model.addAttribute("message","정보 수정이 완료되었습니다!");
-        model.addAttribute("nextUrl","/");
-
+        userService.apiEdit(updateRequest, auth.getName());
+        model.addAttribute("message", "정보 수정이 완료되었습니다!");
+        model.addAttribute("nextUrl", "/");
         return "redirect:/";
     }
 

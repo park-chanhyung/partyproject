@@ -3,9 +3,11 @@ package com.example.demo.email;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Random;
 
@@ -18,14 +20,16 @@ public class EmailServiceImpl implements EmailService{
     public static final String ePw = createKey();
 
     private MimeMessage createMessage(String to)throws Exception{
+        System.out.println("보내는 대상 : "+ to);
+        System.out.println("인증 번호 : "+ePw);
         MimeMessage  message = emailSender.createMimeMessage();
 
         message.addRecipients(MimeMessage.RecipientType.TO, to);//보내는 대상
-        message.setSubject("Party 회원가입 인증 이메일입니다.");//제목
+        message.setSubject("이메일 인증 테스트");//제목
 
         String msgg="";
         msgg+= "<div style='margin:20px;'>";
-        msgg+= "<h1> 안녕하세요 파티입니다. </h1>";
+        msgg+= "<h1> 안녕하세요 박찬형입니다. </h1>";
         msgg+= "<br>";
         msgg+= "<p>아래 코드를 복사해 입력해주세요<p>";
         msgg+= "<br>";
@@ -38,7 +42,7 @@ public class EmailServiceImpl implements EmailService{
         msgg+= ePw+"</strong><div><br/> ";
         msgg+= "</div>";
         message.setText(msgg, "utf-8", "html");//내용
-        message.setFrom(new InternetAddress("chanhyung13@gmail.com","Party"));//보내는 사람
+        message.setFrom(new InternetAddress("chanhyung13@gmail.com","박찬형"));//보내는 사람
 
         return message;
     }
@@ -69,7 +73,7 @@ public class EmailServiceImpl implements EmailService{
     }
     @Override
     public String sendSimpleMessage(String to)throws Exception {
-        // TODO Auto-generated method stub
+        System.out.println("스트링 to "+to);
         MimeMessage message = createMessage(to);
         try{//예외처리
             emailSender.send(message);

@@ -1,5 +1,6 @@
 package com.example.demo.email;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,7 +42,7 @@ public class EmailConfig {
         javaMailSender.setDefaultEncoding("UTF-8");
         return javaMailSender;
     }
-    private Properties getMailProperties()
+    private @NotNull Properties getMailProperties()
     {
         Properties pt = new Properties();
         pt.put("mail.smtp.socketFactory.port", socketPort);
