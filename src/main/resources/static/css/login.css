@@ -180,7 +180,8 @@ form .signin__email:hover {
 }
 
 .google__btn,
-.github__btn {
+.github__btn,
+.naver__btn{
     display: block;
     width: 90%;
     max-width: 680px;
@@ -215,6 +216,15 @@ form .signin__email:hover {
     color: white;
     box-shadow: 0 15px 30px rgba(37, 40, 45, 0.36);
     transition: 0.2s linear;
+    text-decoration: none;
+}
+.google__btn.github__btn,
+.naver__btn.naver__btn {
+    background: #00C73C ;
+    color: white;
+    box-shadow: 0 15px 30px rgba(37, 40, 45, 0.36);
+    transition: 0.2s linear;
+    text-decoration: none;
 }
 .google__btn.github__btn .fa,
 .github__btn.github__btn .fa {
@@ -224,6 +234,19 @@ form .signin__email:hover {
 .google__btn.github__btn:hover,
 .github__btn.github__btn:hover {
     box-shadow: 0 0 0 rgba(37, 40, 45, 0);
+}
+.kakao{
+    text-decoration: none;
+    color: #3A1D1D;
+    font-size: 20px;
+    font-weight: bold;
+}
+.naver{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+
 }
 
 footer p {

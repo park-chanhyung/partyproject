@@ -12,8 +12,8 @@
 <div class="container">
 
     <!-- Heading -->
-    <h1>SIGN IN</h1>
-
+    <h1>Login</h1>
+<!--    <img src="/img/partylogo.png" loading="lazy" width="140" height="80" decoding="async" data-nimg="1"  style="color: transparent;">-->
     <!-- Links -->
     <ul class="links">
         <li>
@@ -46,49 +46,24 @@
         </div>
         <!-- sign in button -->
         <button class="signin__btn">
-            Sign in
+            Login
         </button>
     </form>
 
-<!--    <form th:method="post" th:action="|@{/login}|" th:object="${loginRequest}">-->
-
-<!--        <div>-->
-<!--            <label th:for="loginId">로그인 아이디 : </label>-->
-<!--            <input type="text" th:field="*{loginId}"/>-->
-<!--        </div>-->
-<!--        <br/>-->
-<!--        <div>-->
-<!--            <label th:for="password">비밀번호 : </label>-->
-<!--            <input type="password" th:field="*{password}"/>-->
-<!--        </div>-->
-<!--        <div th:if="${#fields.hasGlobalErrors()}">-->
-<!--            <br/>-->
-<!--            <div class="error-class" th:each="error : ${#fields.globalErrors()}" th:text="${error}" />-->
-<!--        </div>-->
-<!--        <br/>-->
-<!--        <button type="submit">로그인</button>-->
-<!--        <button onclick="location" href="/join">회원 가입</button> <br/><br/>-->
-<!--    </form>-->
-
-
-<!-- separator -->
 <div class="separator">
     <p>OR</p>
 </div>
 <!-- google button -->
-<button class="google__btn">
-    <a href="/oauth2/authorization/google">
+<button class="google__btn" onclick="location.href='/oauth2/authorization/google'">
     <i class="fa fa-google">Google Login</i>
-    </a>
 </button>
 <!-- google button -->
-<button class="github__btn">
-    <i class="fa fa-facebook"></i>
-    <a href="/oauth2/authorization/kakao">Kakao Login</a>
+    <button class="github__btn" onclick="location.href='/oauth2/authorization/kakao'">
+    <span class="kakao"> Kakao Login</span>
 </button>
-<button class="github__btn">
-    <i class="fa fa-facebook"></i>
-    <a href="/oauth2/authorization/naver">Naver Login</a>
+
+<button class="naver__btn" onclick="location.href='/oauth2/authorization/naver'">
+    <i class="naver"> Naver Login</i>
 </button>
 </div>
 </body>

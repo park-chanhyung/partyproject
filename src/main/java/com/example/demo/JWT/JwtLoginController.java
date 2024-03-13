@@ -124,7 +124,7 @@ public class JwtLoginController {
         return "redirect:/";
     }
     @GetMapping("/apiLogin")
-    public String googleLogin(@AuthenticationPrincipal OAuth2User principal,
+    public String apiLogin(@AuthenticationPrincipal OAuth2User principal,
                               HttpServletResponse response,
                               Model model) {
         // OAuth2 로그인을 통해 가져온 사용자 정보
@@ -148,11 +148,9 @@ public class JwtLoginController {
 
         return "redirect:/";
     }
+
     @GetMapping("/jwtLogout")
     public String logout(HttpServletRequest request, HttpServletResponse response, Model model) {
-        model.addAttribute("loginType", "jwt-login");
-        model.addAttribute("pageName", "Jwt Token 화면 로그인");
-
         // 쿠키 파기
         Cookie cookie = new Cookie("jwtToken", null);
         cookie.setMaxAge(0);
@@ -163,7 +161,6 @@ public class JwtLoginController {
         if (session != null) {
             session.invalidate();
         }
-
         return "redirect:/";
     }
     // 내정보
